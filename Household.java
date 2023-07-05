@@ -30,7 +30,6 @@ public class Household {
         public Sim sim4;
         public Sim sim5;
 
-
         public Integer HouseholdFunds;
         public String HouseholdAddress;
 
@@ -83,10 +82,12 @@ public class Household {
             }
 
             if (simAge == Age.TEEN) {
-                int rollforUni = randomizer.nextInt(1);
+                float rollforUni = randomizer.nextFloat(1);
                 if (rollforUni > 0.5) {
                     simJob = Job.UNISTUDENT;
+                    
                 }
+
             }
 
             String simfName = "" ;

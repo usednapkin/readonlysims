@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+
 public class Sim {
     //initialise everything about a sim
     private final String simFirstName;
@@ -7,7 +8,7 @@ public class Sim {
     private final Pronouns simPronoun;
 
     //private ArrayList<Traits> simTraits;
-    private ArrayList<Needs> simNeeds;
+    private ArrayList<Need> simNeeds;
 
     private boolean simCurrentlyAvailable;
     private boolean simIsAlive;
@@ -49,11 +50,33 @@ public class Sim {
     }
 
     public String getAge() {
-        return this.simAge.toString();
+        return this.simAge.toString().toLowerCase();
     }
 
     public String getJob() {
-        return this.simProfession.toString();
+        Job job = this.simProfession;
+
+        switch(job) {
+            //ugly, sorry
+            case ASTRONAUT:
+                return "Astronaut";
+            case CHILDSTUDENT:
+                return "Young Student";
+            case JANITOR:
+                return "Janitor";
+            case PIZZAPERSON:
+                return "Pizza Maker/Delivery Person";
+            case PROGRAMMER:
+                return "Programmer";
+            case RETIRED:
+                return "This sim is retired!";
+            case TEACHER:
+                return "Teacher";
+            case UNISTUDENT:
+                return "University student";
+            default:
+                return "This sim does not appear to have a job!"; //you should NOT be seeing this message
+        }
     }
 
     public String isAvailable() {
