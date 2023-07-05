@@ -5,5 +5,8 @@ public enum Needs {
     BLADDER,
     HYGIENE,
     FUN,
-    SOCIAL
+    SOCIAL;
+
+    
+
 }
