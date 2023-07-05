@@ -6,8 +6,10 @@ public enum Job {
     ASTRONAUT (540, 480, 600, false),
     PROGRAMMER (540, 480, 700, false),
     PIZZAPERSON (480, 600, 350, false),
+    RETIRED(0, 0, 100, false),
     UNISTUDENT (480, 360, 0, true),
     CHILDSTUDENT (480, 360, 0, true);
+
 
     private final int workStartTime;
     private final int simWorkingTicks;
@@ -21,5 +23,5 @@ public enum Job {
         this.childOnly = child;
     }
 
-    
+
 }

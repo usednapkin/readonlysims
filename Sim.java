@@ -79,7 +79,7 @@ public class Sim {
 
     public String toString() {
         
-        return this.getName() + "'s info! \n Pronouns: " + this.getPronoun() + "\n Life Stage: " + this.getAge() + "\n Profession: " + this.getJob() + "\n Partner: " + this.getPartner() + "\n Best Friend: " + this.getBestie() + "\n" + this.isAvailable();
+        return this.getName() + "'s info! \n Pronouns: " + this.getPronoun() + "\n Life Stage: " + this.getAge() + "\n Profession: " + this.getJob() + "\n Partner: " + this.getPartner() + "\n Best Friend: " + this.getBestie() + "\n" + this.isAvailable() + "\n";
 
     }
     

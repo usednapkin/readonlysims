@@ -1,6 +1,5 @@
-//cannot  believe it has come to this
-
 public enum Pronouns {
+    //cant believe its come to this
     THEY ("they", "them", "their", "theirs", "theirself"),
     HE ("he", "him", "his", "himself", "hisself"),
     SHE("she", "her", "her", "hers", "herself");
