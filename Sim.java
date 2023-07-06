@@ -8,10 +8,14 @@ public class Sim {
     private final Pronouns simPronoun;
 
     //private ArrayList<Traits> simTraits;
-    private ArrayList<Need> simNeeds;
+    private ArrayList<Need> simNeeds = new ArrayList<Need>();
 
     private boolean simCurrentlyAvailable;
     private boolean simIsAlive;
+
+    //tick measure for when sim will be able to do something. 
+    //will normally be 0 and then will be set to things when sim is doing
+    private int simOccupiedUntil;
 
     private Job simProfession;
 
@@ -38,6 +42,14 @@ public class Sim {
         //sim should always be alive & available on initialisation, even if it chooses to do something or dies the first tick it can
         this.simIsAlive = true;
         this.simCurrentlyAvailable = true;
+        this.simOccupiedUntil = 0;
+
+        this.simNeeds.add(Need.SLEEP);
+        this.simNeeds.add(Need.BLADDER);
+        this.simNeeds.add(Need.HUNGER);
+        this.simNeeds.add(Need.HYGIENE);
+        this.simNeeds.add(Need.SOCIAL);
+        this.simNeeds.add(Need.FUN);
     }
 
     //getters & general sim info
@@ -79,6 +91,7 @@ public class Sim {
         }
     }
 
+
     public String isAvailable() {
         if (this.simCurrentlyAvailable = true)
             return this.simFirstName + " isn't doing anything right now!";
@@ -100,9 +113,13 @@ public class Sim {
         return "This sim does not have a best friend!";
     }
 
+    public String getNeed() {
+        return "Current Need states:\n Sleep: " + simNeeds.get(0).simCurrentNeed + "/100 | Bladder: "  + simNeeds.get(1).simCurrentNeed + "/100 | Hunger: "  + simNeeds.get(2).simCurrentNeed + "/100 | Hygiene: "  + simNeeds.get(3).simCurrentNeed + "/100 | Social: "  + simNeeds.get(4).simCurrentNeed + "/100 | Fun: "  + simNeeds.get(5).simCurrentNeed + "/100 \n";
+    }
+
     public String toString() {
         
-        return this.getName() + "'s info! \n Pronouns: " + this.getPronoun() + "\n Life Stage: " + this.getAge() + "\n Profession: " + this.getJob() + "\n Partner: " + this.getPartner() + "\n Best Friend: " + this.getBestie() + "\n" + this.isAvailable() + "\n";
+        return this.getName() + "'s info! \n Pronouns: " + this.getPronoun() + "\n Life Stage: " + this.getAge() + "\n Profession: " + this.getJob() + "\n Partner: " + this.getPartner() + "\n Best Friend: " + this.getBestie() + "\n" + this.isAvailable() + "\n" + this.getNeed();
 
     }
     

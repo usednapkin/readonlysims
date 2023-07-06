@@ -1,9 +1,11 @@
 import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 public class Household {
 
         //sim random pools
+        //should probably do something different with these but like,, h
         List<String> mascNamePool = Arrays.asList("Dave", "John", "Toby", "Tom", "Miguel", "Henry", "Jack", "Ryan", "James", "Matt");
         List<String> femNamePool = Arrays.asList("Isabelle", "Anna", "Ffion", "Matilda", "Liz", "Amanda", "Carrie", "Sophie", "Eris", "Bessie");
         List<String> neutralNamePool = Arrays.asList("Alex", "Jay", "Sock", "Frog", "Ashley", "Casey", "Stick", "Cameron", "Tingle", "Rock");
@@ -24,6 +26,7 @@ public class Household {
          * MAKE IT SO THERE IS AT LEAST ONE ADULT IN EVERY SIM HOUSEHOLD
          */
 
+        //unfortunately i think these need to be public
         public Sim leadSim;
         public Sim sim2;
         public Sim sim3;
@@ -33,7 +36,10 @@ public class Household {
         public Integer HouseholdFunds;
         public String HouseholdAddress;
 
-        Random randomizer = new Random();
+        private Random randomizer = new Random();
+
+        public ArrayList<Sim> Sims = new ArrayList<Sim>();
+        public ArrayList<Sim> Graveyard = new ArrayList<Sim>();
 
         public Household() {
 
@@ -45,6 +51,13 @@ public class Household {
             this.sim3 = generateSim(false);
             this.sim4 = generateSim(false);
             this.sim5 = generateSim(false);
+
+            //array of sims for dealing with them in bulk/checking which ones are alive
+            Sims.add(0, leadSim);
+            Sims.add(0, sim2);
+            Sims.add(0, sim3);
+            Sims.add(0, sim4);
+            Sims.add(0, sim5);
 
         }
 
