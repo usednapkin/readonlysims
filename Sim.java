@@ -165,10 +165,38 @@ public class Sim {
       } 
 
       //this is what happens when you can't use enums. i remember why i tried now
-      //anyway lets get to it!
+      //anyway lets get to it! (refactor this later, jesus christ)
+
+      /**
+       * streamlines the need requirement by making sure it will bound to -100+100
+       * 
+        * @param amount the amount to increase or decrease by
+        * @param currentNeedState the need's current state
+        */
+    public int checkNeedRequirement(int amount, int currentNeedState) {
+            //make everything positive
+            amount = Math.abs(amount);
+
+            //max is 100
+            if (amount > 100) {
+                amount = 100;
+            }
+
+            //reduce to 
+            if ((currentNeedState + amount) > simNeedUpperLimit) {
+                amount = simNeedUpperLimit - amount;
+                System.out.println("Current amount: " + amount);
+                return amount;
+            }
+
+            return amount;
+      }
 
       //true = add, false = remove
       public void setNeedSleep(int amount, boolean addSub) {
+
+            checkNeedRequirement(amount, this.needSleep);
+
             if (addSub == true) {
                 this.needSleep = this.needSleep + amount;
                 return;
@@ -177,6 +205,10 @@ public class Sim {
       }
 
       public void setNeedBladder(int amount, boolean addSub) {
+
+            checkNeedRequirement(amount, this.needBladder);
+
+
             if (addSub == true) {
                 this.needBladder = this.needBladder + amount;
                 return;
@@ -186,6 +218,9 @@ public class Sim {
       }
 
       public void setNeedHunger(int amount, boolean addSub) {
+
+            checkNeedRequirement(amount, this.needHunger);
+
             if (addSub == true) {
                 this.needHunger = this.needHunger + amount;
                 return;
@@ -195,6 +230,9 @@ public class Sim {
       }
 
       public void setNeedHygiene(int amount, boolean addSub) {
+
+            checkNeedRequirement(amount, this.needHygiene);
+
             if (addSub == true) {
                 this.needHygiene = this.needHygiene + amount;
                 return;
@@ -204,6 +242,10 @@ public class Sim {
       }
 
       public void setNeedFun(int amount, boolean addSub) {
+
+            checkNeedRequirement(amount, this.needFun);
+
+
             if (addSub == true) {
                 this.needFun = this.needFun + amount;
                 return;
@@ -213,6 +255,9 @@ public class Sim {
       }
 
       public void setNeedSocial(int amount, boolean addSub) {
+
+            checkNeedRequirement(amount, this.needSocial);
+
             if (addSub == true) {
                 this.needSocial = this.needSocial + amount;
                 return;

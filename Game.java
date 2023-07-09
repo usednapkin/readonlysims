@@ -24,6 +24,22 @@ public class Game {
         Household gameHousehold = new Household();
 
         System.out.println(gameHousehold.toString());
+
+        gameHousehold.leadSim.setNeedBladder(50, false);
+
+        System.out.println("Editing Sim 1's bladder need...");
+        System.out.println(gameHousehold.leadSim.toString());
+
+        gameHousehold.leadSim.setNeedBladder(25, true);
+
+        System.out.println("Editing Sim 1's bladder need...");
+        System.out.println(gameHousehold.leadSim.toString());
+
+        gameHousehold.leadSim.setNeedBladder(50, true);
+
+
+        System.out.println("Editing Sim 1's bladder need...");
+        System.out.println(gameHousehold.leadSim.toString());
     }
 
 
