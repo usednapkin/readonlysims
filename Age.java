@@ -1,3 +1,8 @@
+/**
+ * Initialises sim ages
+ * @author usednapkin
+ */
+
 public enum Age {
 
     /*NOTE
@@ -6,9 +11,6 @@ public enum Age {
      * treat baby as need? idk
      */
     //enummed sim ages
-   //BABY,
-   //TODDLER, 
-
 
    CHILD (true, false, true),
    TEEN (true, true, true),
@@ -21,7 +23,14 @@ public enum Age {
    private final boolean simCanWork;
    private final boolean simCanSchool;
 
-   Age(boolean canAutonomy, boolean canWork, boolean canSchool) {
+   /**
+    * constructor for sim ages
+    
+     * @param canAutonomy whether the sim can perform autonomy for itself 
+      * @param canWork whether the sim can go to work
+     * @param canSchool whether the sim can go to school
+     */
+Age(boolean canAutonomy, boolean canWork, boolean canSchool) {
         this.simCanAutonomy = canAutonomy;
         this.simCanWork = canWork;
         this.simCanSchool = canSchool;

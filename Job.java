@@ -1,3 +1,9 @@
+/**
+ * Initialises sim jobs along with daily pay, start times,
+ * end times & who can work them
+ * @author usednapkin
+ */
+
 public enum Job {
     //enum list of jobs
     //ill expand this
@@ -16,6 +22,13 @@ public enum Job {
     private final int simDailyPay;
     private final boolean childOnly;
    
+    /**
+     * constructs job
+     * @param startTime tick value when work starts
+     * @param workTicks how long the sim wil be unavailable for
+     * @param dailyPay how much sim gets paid
+     * @param child whether this is a job for babies (school)
+     */
     Job(int startTime, int workTicks, int dailyPay, boolean child) {
         this.workStartTime = startTime;
         this.simWorkingTicks = workTicks;

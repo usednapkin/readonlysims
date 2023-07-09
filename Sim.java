@@ -1,5 +1,11 @@
 import java.util.ArrayList;
 
+/**
+ * Initialises all sims
+ * 
+ * @author usednapkin
+ */
+
 public class Sim {
     //initialise everything about a sim
     private final String simFirstName;
@@ -29,6 +35,15 @@ public class Sim {
 
 
     //sim constructor
+    /**
+     * all of these will be randomly selected upon household generation 
+     * 
+     * @param fName sim's first name 
+     * @param lName sim's last name
+     * @param pronoun chosen pronoun for sim
+     * @param job chosen job for sim
+     * @param age chosen age for sim
+     */
     public Sim(String fName, String lName, Pronouns pronoun, Job job, Age age){
         this.simFirstName = fName;
         this.simLastName = lName;
@@ -53,18 +68,34 @@ public class Sim {
     }
 
     //getters & general sim info
+
+    /**
+     * for easier formatting
+     * @return sim's first name and last name 
+     */
     public String getName() {
         return this.simFirstName + " " + this.simLastName;
     }
 
+    /**
+     * for easier formatting
+     * @return sim's formatted pronouns
+     */
     public String getPronoun() {
         return this.simPronoun.subject.toString() + "/" + this.simPronoun.objectP.toString();
     }
 
+    /**
+     * for easier formatting
+     * @return sim's formatted age
+     */
     public String getAge() {
         return this.simAge.toString().toLowerCase();
     }
 
+    /**
+     * @return a formatted version of the sim's job
+     */
     public String getJob() {
         Job job = this.simProfession;
 
@@ -124,6 +155,9 @@ public class Sim {
     }
     
     //i apologise for the ugly but this was the only way i could think of doing this without destroying the delicate structure i have built
+    /**
+     * ages up a sim, calls death function or changes sim age
+     */
     public void ageUp() {
         switch(this.simAge) {
             case CHILD:
@@ -144,10 +178,18 @@ public class Sim {
         }
     }
 
+    /**
+     * objectively the funniest function i have ever had to write
+     * changes death flags
+     * 
+     * no i'm not implementing ghosts, but in case i do, i've only changed the death flag
+     * ;}
+     */
     public void die() {
         this.simIsAlive = false;
     }
 
+    //these are just setters for friend/partner flags
     public void setPartner(Sim partner) {
         this.simPartner = partner;
     }

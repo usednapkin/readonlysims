@@ -1,3 +1,11 @@
+/**
+ * This is a text based version of the sims that runs in the command line.
+ * You, the player, have no autonomy and the sims entirely take care of themselves
+ * inspired by that one video from gamemakers toolkit
+ * 
+ * @author usednapkin
+ */
+
 public class Game {
     //the actual game
     public static void main(String[] args) {    

@@ -14,6 +14,5 @@ public enum Need {
     Need(int NegativeNeedLowerLimit, int PositiveNeedUpperLimit, int simCurrentNeed) {
         this.simCurrentNeed = 100;
     }
-
-
+    
 }
