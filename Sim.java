@@ -193,12 +193,11 @@ public class Sim {
             }   }
 
             
-
             if (addSub == false){
                 System.out.println(currentNeedState - amount);
                 if ((currentNeedState - amount) < simNeedLowerLimit) {
                     System.out.println("Current amount: " + amount);
-                    amount = (simNeedLowerLimit + currentNeedState);
+                    amount = (simNeedLowerLimit - currentNeedState);
                     System.out.println("Current amount: " + amount);
                     return amount;
                 }
