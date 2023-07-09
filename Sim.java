@@ -13,8 +13,7 @@ public class Sim {
 
     private final Pronouns simPronoun;
 
-    //private ArrayList<Traits> simTraits;
-    private ArrayList<Need> simNeeds = new ArrayList<Need>();
+
 
     private boolean simCurrentlyAvailable;
     private boolean simIsAlive;
@@ -22,6 +21,19 @@ public class Sim {
     //tick measure for when sim will be able to do something. 
     //will normally be 0 and then will be set to things when sim is doing
     private int simOccupiedUntil;
+
+    //sim needs, originally did these as an enum because i'm insane but i think
+    //this way is probably a lot... easier, idk what i was on
+    private int needSleep;
+    private int needBladder;
+    private int needHunger;
+    private int needHygiene;
+    private int needSocial;
+    private int needFun;
+
+    //gonna use these to regulate sim feelings
+    public int simNeedUpperLimit = 100;
+    public int simNeedLowerLimit = -100;
 
     private Job simProfession;
 
@@ -32,6 +44,8 @@ public class Sim {
 
     private ArrayList<Sim> friends;
     private ArrayList<Sim> children;
+
+    
 
 
     //sim constructor
@@ -59,12 +73,14 @@ public class Sim {
         this.simCurrentlyAvailable = true;
         this.simOccupiedUntil = 0;
 
-        this.simNeeds.add(Need.SLEEP);
-        this.simNeeds.add(Need.BLADDER);
-        this.simNeeds.add(Need.HUNGER);
-        this.simNeeds.add(Need.HYGIENE);
-        this.simNeeds.add(Need.SOCIAL);
-        this.simNeeds.add(Need.FUN);
+        //generate a full happy batch of needs on start
+        this.needSleep = 100;
+        this.needBladder = 100;
+        this.needHygiene = 100;
+        this.needHunger = 100;
+        this.needFun = 100;
+        this.needSocial = 100;
+
     }
 
     //getters & general sim info
@@ -144,15 +160,73 @@ public class Sim {
         return "This sim does not have a best friend!";
     }
 
-    public String getNeed() {
-        return "Current Need states:\n Sleep: " + simNeeds.get(0).simCurrentNeed + "/100 | Bladder: "  + simNeeds.get(1).simCurrentNeed + "/100 | Hunger: "  + simNeeds.get(2).simCurrentNeed + "/100 | Hygiene: "  + simNeeds.get(3).simCurrentNeed + "/100 | Social: "  + simNeeds.get(4).simCurrentNeed + "/100 | Fun: "  + simNeeds.get(5).simCurrentNeed + "/100 \n";
-    }
+      public String getNeed() {
+          return "Current Need states:\n Sleep: " + this.needSleep + "/100 | Bladder: "  + this.needBladder + "/100 | Hunger: "  + this.needHunger + "/100 | Hygiene: "  + this.needHygiene + "/100 | Social: "  + this.needSocial + "/100 | Fun: "  + this.needFun + "/100 \n";
+      } 
 
-    public String toString() {
-        
-        return this.getName() + "'s info! \n Pronouns: " + this.getPronoun() + "\n Life Stage: " + this.getAge() + "\n Profession: " + this.getJob() + "\n Partner: " + this.getPartner() + "\n Best Friend: " + this.getBestie() + "\n" + this.isAvailable() + "\n" + this.getNeed();
+      //this is what happens when you can't use enums. i remember why i tried now
+      //anyway lets get to it!
 
-    }
+      //true = add, false = remove
+      public void setNeedSleep(int amount, boolean addSub) {
+            if (addSub == true) {
+                this.needSleep = this.needSleep + amount;
+                return;
+            }
+            this.needSleep = this.needSleep - amount;
+      }
+
+      public void setNeedBladder(int amount, boolean addSub) {
+            if (addSub == true) {
+                this.needBladder = this.needBladder + amount;
+                return;
+            }
+
+            this.needBladder = this.needBladder - amount;
+      }
+
+      public void setNeedHunger(int amount, boolean addSub) {
+            if (addSub == true) {
+                this.needHunger = this.needHunger + amount;
+                return;
+            }
+
+            this.needHunger = this.needHunger - amount;
+      }
+
+      public void setNeedHygiene(int amount, boolean addSub) {
+            if (addSub == true) {
+                this.needHygiene = this.needHygiene + amount;
+                return;
+            }
+
+            this.needHygiene = this.needHygiene - amount;
+      }
+
+      public void setNeedFun(int amount, boolean addSub) {
+            if (addSub == true) {
+                this.needFun = this.needFun + amount;
+                return;
+            }
+
+            this.needFun = this.needFun - amount;
+      }
+
+      public void setNeedSocial(int amount, boolean addSub) {
+            if (addSub == true) {
+                this.needSocial = this.needSocial + amount;
+                return;
+            }
+
+            this.needSocial = this.needSocial - amount;
+      }
+
+
+
+      public String toString() {
+
+          return this.getName() + "'s info! \n Pronouns: " + this.getPronoun() + "\n Life Stage: " + this.getAge() + "\n Profession: " + this.getJob() + "\n Partner: " + this.getPartner() + "\n Best Friend: " + this.getBestie() + "\n" + this.isAvailable() + "\n" + this.getNeed();    
+      }
     
     //i apologise for the ugly but this was the only way i could think of doing this without destroying the delicate structure i have built
     /**
