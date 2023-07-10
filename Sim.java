@@ -13,8 +13,6 @@ public class Sim {
 
     private final Pronouns simPronoun;
 
-
-
     private boolean simCurrentlyAvailable;
     private boolean simIsAlive;
 
@@ -32,8 +30,8 @@ public class Sim {
     private int needFun;
 
     //gonna use these to regulate sim feelings
-    public int simNeedUpperLimit = 100;
-    public int simNeedLowerLimit = -100;
+    public final int simNeedUpperLimit = 100;
+    public final int simNeedLowerLimit = -100;
 
     private Job simProfession;
 
@@ -150,19 +148,19 @@ public class Sim {
         if (this.simPartner != null)
             return this.simFirstName + "'s partner is " + this.simBestFriend.getName();
         
-        return "This sim does not have a partner!";
+            return "This sim does not have a partner!";
     }
 
     public String getBestie() {
         if (this.simBestFriend != null)
             return this.simFirstName + "'s best friend is " + this.simBestFriend.getName();
         
-        return "This sim does not have a best friend!";
+            return "This sim does not have a best friend!";
     }
 
-      public String getNeed() {
-          return "Current Need states:\n Sleep: " + this.needSleep + "/100 | Bladder: "  + this.needBladder + "/100 | Hunger: "  + this.needHunger + "/100 | Hygiene: "  + this.needHygiene + "/100 | Social: "  + this.needSocial + "/100 | Fun: "  + this.needFun + "/100 \n";
-      } 
+    public String getNeed() {
+        return "Current Need states:\n Sleep: " + this.needSleep + "/100 | Bladder: "  + this.needBladder + "/100 | Hunger: "  + this.needHunger + "/100 | Hygiene: "  + this.needHygiene + "/100 | Social: "  + this.needSocial + "/100 | Fun: "  + this.needFun + "/100 \n";
+    } 
 
       //this is what happens when you can't use enums. i remember why i tried now
       //anyway lets get to it! (refactor this later, jesus christ)
@@ -172,121 +170,108 @@ public class Sim {
        * 
         * @param amount the amount to increase or decrease by
         * @param currentNeedState the need's current state
+        * @param addSub whether its being added or subtracted
         */
     public int checkNeedRequirement(int amount, int currentNeedState, boolean addSub) {
-            //make everything positive
-            amount = Math.abs(amount);
+        //make everything positive
+        amount = Math.abs(amount);
+        //max is 100
+        amount = Math.min(amount, 100);
 
-            //max is 100
-            if (amount > 100) {
-                amount = 100;
-            }
-
-            //reduce to 100
-
-            if(addSub == true ) {
-                if ((currentNeedState + amount) > simNeedUpperLimit) {
-                System.out.println("Current amount: " + amount);
+        //reduce to 100
+        if(addSub == true ) {
+            if ((currentNeedState + amount) > simNeedUpperLimit) {
                 amount = (simNeedUpperLimit - currentNeedState);
-                System.out.println("Current amount: " + amount);
                 return amount;
-            }   }
-
-            
-            if (addSub == false){
-                System.out.println(currentNeedState - amount);
-                if ((currentNeedState - amount) < simNeedLowerLimit) {
-                    System.out.println("Current amount: " + amount);
-                    amount = (simNeedLowerLimit - currentNeedState);
-                    System.out.println("Current amount: " + amount);
-                    return amount;
-                }
+            }  
+        }
+        
+        if (addSub == false){
+            if ((currentNeedState - amount) < simNeedLowerLimit) {
+                amount = (simNeedLowerLimit - currentNeedState);
+                return amount;
             }
+        }
+        return amount;
+    }
 
+    //true = add, false = remove
+    public void setNeedSleep(int amount, boolean addSub) {
 
-            return amount;
+        amount = checkNeedRequirement(amount, this.needSleep, addSub);
+
+        if (addSub == true) {
+            this.needSleep = this.needSleep + amount;
+            return;
+        }
+        this.needSleep = this.needSleep - amount;
       }
 
-      //true = add, false = remove
-      public void setNeedSleep(int amount, boolean addSub) {
+    public void setNeedBladder(int amount, boolean addSub) {
 
-            amount = checkNeedRequirement(amount, this.needSleep, addSub);
+        amount = checkNeedRequirement(amount, this.needBladder, addSub);
 
-            if (addSub == true) {
-                this.needSleep = this.needSleep + amount;
-                return;
-            }
-            this.needSleep = this.needSleep - amount;
-      }
+        if (addSub == true) {
+            this.needBladder = this.needBladder + amount;
+            return;
+        }
 
-      public void setNeedBladder(int amount, boolean addSub) {
+        this.needBladder = this.needBladder - amount;
+    }
 
-            amount = checkNeedRequirement(amount, this.needBladder, addSub);
+    public void setNeedHunger(int amount, boolean addSub) {
 
+        amount = checkNeedRequirement(amount, this.needHunger, addSub);
 
-            if (addSub == true) {
-                this.needBladder = this.needBladder + amount;
-                return;
-            }
+        if (addSub == true) {
+            this.needHunger = this.needHunger + amount;
+            return;
+        }
 
-            this.needBladder = this.needBladder - amount;
-      }
+        this.needHunger = this.needHunger - amount;
+    }
 
-      public void setNeedHunger(int amount, boolean addSub) {
+    public void setNeedHygiene(int amount, boolean addSub) {
 
-            amount = checkNeedRequirement(amount, this.needHunger, addSub);
+        amount = checkNeedRequirement(amount, this.needHygiene, addSub);
 
-            if (addSub == true) {
-                this.needHunger = this.needHunger + amount;
-                return;
-            }
+        if (addSub == true) {
+            this.needHygiene = this.needHygiene + amount;
+            return;
+        }
 
-            this.needHunger = this.needHunger - amount;
-      }
+        this.needHygiene = this.needHygiene - amount;
+    }
 
-      public void setNeedHygiene(int amount, boolean addSub) {
+    public void setNeedFun(int amount, boolean addSub) {
 
-            amount = checkNeedRequirement(amount, this.needHygiene, addSub);
+        amount = checkNeedRequirement(amount, this.needFun, addSub);
 
-            if (addSub == true) {
-                this.needHygiene = this.needHygiene + amount;
-                return;
-            }
+        if (addSub == true) {
+            this.needFun = this.needFun + amount;
+            return;
+        }
 
-            this.needHygiene = this.needHygiene - amount;
-      }
+        this.needFun = this.needFun - amount;
+    }
 
-      public void setNeedFun(int amount, boolean addSub) {
+    public void setNeedSocial(int amount, boolean addSub) {
 
-            amount = checkNeedRequirement(amount, this.needFun, addSub);
+        amount = checkNeedRequirement(amount, this.needSocial, addSub);
 
+        if (addSub == true) {
+            this.needSocial = this.needSocial + amount;
+            return;
+        }
 
-            if (addSub == true) {
-                this.needFun = this.needFun + amount;
-                return;
-            }
-
-            this.needFun = this.needFun - amount;
-      }
-
-      public void setNeedSocial(int amount, boolean addSub) {
-
-            amount = checkNeedRequirement(amount, this.needSocial, addSub);
-
-            if (addSub == true) {
-                this.needSocial = this.needSocial + amount;
-                return;
-            }
-
-            this.needSocial = this.needSocial - amount;
-      }
+        this.needSocial = this.needSocial - amount;
+    }
 
 
 
-      public String toString() {
-
-          return this.getName() + "'s info! \n Pronouns: " + this.getPronoun() + "\n Life Stage: " + this.getAge() + "\n Profession: " + this.getJob() + "\n Partner: " + this.getPartner() + "\n Best Friend: " + this.getBestie() + "\n" + this.isAvailable() + "\n" + this.getNeed();    
-      }
+    public String toString() {
+        return this.getName() + "'s info! \n Pronouns: " + this.getPronoun() + "\n Life Stage: " + this.getAge() + "\n Profession: " + this.getJob() + "\n Partner: " + this.getPartner() + "\n Best Friend: " + this.getBestie() + "\n" + this.isAvailable() + "\n" + this.getNeed();    
+    }
     
     //i apologise for the ugly but this was the only way i could think of doing this without destroying the delicate structure i have built
     /**

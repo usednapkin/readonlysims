@@ -23,10 +23,12 @@ public enum Pronouns {
      * @param reflexive - reflexive pronoun, refers to previously named noun/pronoun - theirself, hisself, herself
      */
     Pronouns(String subject, String objectP, String possessiveD, String possessiveP, String reflexive) {
+
         this.subject = subject;
         this.objectP = objectP;
         this.possessiveD = possessiveD;
         this.possessiveP = possessiveP;
         this.reflexive = reflexive;
+        
     }
 }

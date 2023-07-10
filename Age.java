@@ -23,17 +23,16 @@ public enum Age {
    private final boolean simCanWork;
    private final boolean simCanSchool;
 
-   /**
-    * constructor for sim ages
-    
+     /**
+     * constructor for sim ages
      * @param canAutonomy whether the sim can perform autonomy for itself 
-      * @param canWork whether the sim can go to work
+     * @param canWork whether the sim can go to work
      * @param canSchool whether the sim can go to school
      */
-Age(boolean canAutonomy, boolean canWork, boolean canSchool) {
+     Age(boolean canAutonomy, boolean canWork, boolean canSchool) {
         this.simCanAutonomy = canAutonomy;
         this.simCanWork = canWork;
         this.simCanSchool = canSchool;
-   }
+     }
 
 }
