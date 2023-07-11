@@ -43,8 +43,6 @@ public class Sim {
     private ArrayList<Sim> friends;
     private ArrayList<Sim> children;
 
-    
-
 
     //sim constructor
     /**

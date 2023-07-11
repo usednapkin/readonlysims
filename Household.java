@@ -14,19 +14,19 @@ public class Household {
 
     //sim random pools
     //should probably do something different with these but like,, h
-    List<String> mascNamePool = Arrays.asList("Dave", "John", "Toby", "Tom", "Miguel", "Henry", "Jack", "Ryan", "James", "Matt");
-    List<String> femNamePool = Arrays.asList("Isabelle", "Anna", "Ffion", "Matilda", "Liz", "Amanda", "Carrie", "Sophie", "Eris", "Bessie");
-    List<String> neutralNamePool = Arrays.asList("Alex", "Jay", "Sock", "Frog", "Ashley", "Casey", "Stick", "Cameron", "Tingle", "Rock");
-    List<String> lastNamePool = Arrays.asList("Apple", "Blahaj", "Custard", "Doorstep", "Electron", "Foghorn", "Grape", "Hellscape", "Intangible", "Java");;
+    private List<String> mascNamePool = Arrays.asList("Dave", "John", "Toby", "Tom", "Miguel", "Henry", "Jack", "Ryan", "James", "Matt");
+    private List<String> femNamePool = Arrays.asList("Isabelle", "Anna", "Ffion", "Matilda", "Liz", "Amanda", "Carrie", "Sophie", "Eris", "Bessie");
+    private List<String> neutralNamePool = Arrays.asList("Alex", "Jay", "Sock", "Frog", "Ashley", "Casey", "Stick", "Cameron", "Tingle", "Rock");
+    private List<String> lastNamePool = Arrays.asList("Apple", "Blahaj", "Custard", "Doorstep", "Electron", "Foghorn", "Grape", "Hellscape", "Intangible", "Java");;
    
-    List<Pronouns> selectablePronouns = Arrays.asList(Pronouns.THEY, Pronouns.HE, Pronouns.SHE);
+    private List<Pronouns> selectablePronouns = Arrays.asList(Pronouns.THEY, Pronouns.HE, Pronouns.SHE);
     
-    List<Age> selectableAge = Arrays.asList(Age.CHILD, Age.TEEN, Age.YOUNGADULT, Age.ADULT, Age.ELDER);
+    private List<Age> selectableAge = Arrays.asList(Age.CHILD, Age.TEEN, Age.YOUNGADULT, Age.ADULT, Age.ELDER);
     
-    List<Job> selectableJob = Arrays.asList(Job.TEACHER, Job.JANITOR, Job.ASTRONAUT, Job.PIZZAPERSON, Job.PROGRAMMER);
+    private List<Job> selectableJob = Arrays.asList(Job.TEACHER, Job.JANITOR, Job.ASTRONAUT, Job.PIZZAPERSON, Job.PROGRAMMER);
     
-    List<String> addressNames = Arrays.asList("Yellow", "Blue", "Red", "Pink", "Purple", "Orange", "Green", "Turquoise", "Magenta", "Prismarine", "Grey");
-    List<String> addressStreetType = Arrays.asList("Lane", "Road", "Court", "Avenue", "Street");
+    private List<String> addressNames = Arrays.asList("Yellow", "Blue", "Red", "Pink", "Purple", "Orange", "Green", "Turquoise", "Magenta", "Prismarine", "Grey");
+    private List<String> addressStreetType = Arrays.asList("Lane", "Road", "Court", "Avenue", "Street");
     //generates all sims
     //unfortunately i think these need to be public
     public Sim leadSim;
@@ -43,11 +43,11 @@ public class Household {
     public ArrayList<Sim> Sims = new ArrayList<Sim>();
     public ArrayList<Sim> Graveyard = new ArrayList<Sim>();
 
-        /**
-         * Generates a sim household with five sims and an address
-         * 
-         * Constructor takes no arguments, does everything automatically
-         */
+    /**
+    * Generates a sim household with five sims and an address
+    * 
+    * Constructor takes no arguments, does everything automatically
+    */
     public Household() {
 
         this.HouseholdFunds = 0;
