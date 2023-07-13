@@ -70,10 +70,10 @@ public class Household {
         */
     public String toString() {
         String simString = "In your household... \n";
-        for (int i = 0; i < Sims.size() - 1; i++) {
+        for (int i = 0; i < Sims.size(); i++) {
             simString = simString + Sims.get(i);
         }
-        
+
         simString += "Your Household's Current Funds: $" + this.getHouseholdFunds() + "\n";
         simString += "Your Household's Address: " + this.getHouseholdAddress() + "\n";
 
