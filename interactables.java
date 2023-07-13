@@ -7,7 +7,7 @@ public class interactables {
 
     public String interactableName;
 
-    public <T> T randomItem(Random randomizer, T[] array){
+    public static <T> T randomItem(Random randomizer, T[] array){
         return array[randomizer.nextInt(array.length)];
     }
 

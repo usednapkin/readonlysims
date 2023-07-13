@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Initialises all sims
@@ -7,6 +8,21 @@ import java.util.ArrayList;
  */
 
 public class Sim {
+
+    //sim random pools
+    private final static String[] mascNamePool = new String[]{"Dave", "John", "Toby", "Tom", "Miguel", "Henry", "Jack", "Ryan", "James", "Matt"};
+    private final static String[] femNamePool = new String[]{"Isabelle", "Anna", "Ffion", "Matilda", "Liz", "Amanda", "Carrie", "Sophie", "Eris", "Bessie"};
+    private final static String[] neutralNamePool = new String[]{"Alex", "Jay", "Sock", "Frog", "Ashley", "Casey", "Stick", "Cameron", "Tingle", "Rock"};
+    private final static String[] lastNamePool = new String[]{"Apple", "Blahaj", "Custard", "Doorstep", "Electron", "Foghorn", "Grape", "Hellscape", "Intangible", "Java"};
+   
+    private final static Pronouns[] selectablePronouns = new Pronouns[]{Pronouns.THEY, Pronouns.HE, Pronouns.SHE};
+    
+    private final static Age[] selectableAge = new Age[]{Age.CHILD, Age.TEEN, Age.YOUNGADULT, Age.ADULT, Age.ELDER};
+    
+    private final static Job[] selectableJob = new Job[]{Job.TEACHER, Job.JANITOR, Job.ASTRONAUT, Job.PIZZAPERSON, Job.PROGRAMMER};
+
+    private static Random randomizer = new Random();
+    
     //initialise everything about a sim
     private final String simFirstName;
     private final String simLastName;
@@ -77,6 +93,68 @@ public class Sim {
         this.needFun = 100;
         this.needSocial = 100;
 
+    }
+
+        //thank you eris
+    public static <T> T randomItem(Random randomizer, T[] array){
+        return array[randomizer.nextInt(array.length)];
+    }
+
+    /**
+     * this one generates sims and makes sure they follow certain parameters
+     * ie child/elder sims cant work, teen sims have a chance of
+     * going to university or going to work
+     * 
+     * @param lead whether the sim is the lead sim of the household - 
+     * this will force them in to being an adult
+     * @return a freshly generated sim
+     */
+    public static Sim generateSim(boolean lead) {
+        Pronouns simPronouns = randomItem(randomizer, selectablePronouns);
+        Job simJob = randomItem(randomizer, selectableJob);
+        Age simAge = randomItem(randomizer, selectableAge);
+
+        if (lead == true) {
+            simAge = Age.ADULT;
+        }
+            
+        if (simAge == Age.CHILD) {
+            simJob = Job.CHILDSTUDENT;
+        }
+
+        if (simAge == Age.ELDER) {
+            simJob = Job.RETIRED;
+        }
+
+        if (simAge == Age.TEEN) {
+            float rollforUni = randomizer.nextFloat(1);
+            if (rollforUni > 0.5) {
+                simJob = Job.UNISTUDENT;
+                
+            }
+        }
+
+        String simfName = "" ;
+
+            //choose name based off pronouns
+        switch(simPronouns) {
+            case THEY:
+                simfName = randomItem(randomizer, neutralNamePool);
+                break;
+            case HE:
+                simfName = randomItem(randomizer, mascNamePool);
+                break;
+            case SHE:
+                simfName = randomItem(randomizer, femNamePool);
+                break;
+        }
+
+        //pick a last name
+        String simlName = randomItem(randomizer, lastNamePool);
+
+        Sim newSim = new Sim(simfName, simlName, simPronouns, simJob, simAge);
+
+        return newSim;
     }
 
     //getters & general sim info

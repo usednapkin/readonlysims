@@ -19,7 +19,4 @@ public class interactableSleep extends interactables {
         this.interactableName = randomItem(randomizer, sleepNamePool);
     }
 
-
-
-
 }

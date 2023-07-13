@@ -25,41 +25,41 @@ public class Game {
 
         System.out.println(gameHousehold.toString());
 
-        gameHousehold.leadSim.setNeedBladder(50, false);
+        gameHousehold.Sims.get(0).setNeedBladder(50, false);
 
         System.out.println("Editing Sim 1's bladder need...");
-        System.out.println(gameHousehold.leadSim.toString());
+        System.out.println(gameHousehold.Sims.get(0).toString());
 
-        gameHousehold.leadSim.setNeedBladder(25, true);
-
-        System.out.println("Editing Sim 1's bladder need...");
-        System.out.println(gameHousehold.leadSim.toString());
-
-        gameHousehold.leadSim.setNeedBladder(1000, true);
-
+        gameHousehold.Sims.get(0).setNeedBladder(25, true);
 
         System.out.println("Editing Sim 1's bladder need...");
-        System.out.println(gameHousehold.leadSim.toString());
+        System.out.println(gameHousehold.Sims.get(0).toString());
 
-        gameHousehold.leadSim.setNeedBladder(1000, false);
+        gameHousehold.Sims.get(0).setNeedBladder(1000, true);
 
-        System.out.println("Editing Sim 1's bladder need...");
-        System.out.println(gameHousehold.leadSim.toString());
-
-        gameHousehold.leadSim.setNeedBladder(50, false);
 
         System.out.println("Editing Sim 1's bladder need...");
-        System.out.println(gameHousehold.leadSim.toString());
+        System.out.println(gameHousehold.Sims.get(0).toString());
 
-        gameHousehold.leadSim.setNeedBladder(25, false);
-
-        System.out.println("Editing Sim 1's bladder need...");
-        System.out.println(gameHousehold.leadSim.toString());
-
-                gameHousehold.leadSim.setNeedBladder(1, false);
+        gameHousehold.Sims.get(0).setNeedBladder(1000, false);
 
         System.out.println("Editing Sim 1's bladder need...");
-        System.out.println(gameHousehold.leadSim.toString());
+        System.out.println(gameHousehold.Sims.get(0).toString());
+
+        gameHousehold.Sims.get(0).setNeedBladder(50, false);
+
+        System.out.println("Editing Sim 1's bladder need...");
+        System.out.println(gameHousehold.Sims.get(0).toString());
+
+        gameHousehold.Sims.get(0).setNeedBladder(25, false);
+
+        System.out.println("Editing Sim 1's bladder need...");
+        System.out.println(gameHousehold.Sims.get(0).toString());
+
+        gameHousehold.Sims.get(0).setNeedBladder(1, false);
+
+        System.out.println("Editing Sim 1's bladder need...");
+        System.out.println(gameHousehold.Sims.get(0).toString());
 
 
 
