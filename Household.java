@@ -1,8 +1,6 @@
 
 
-import java.util.Arrays;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 /**
@@ -13,20 +11,19 @@ import java.util.Random;
 public class Household {
 
     //sim random pools
-    //should probably do something different with these but like,, h
-    private List<String> mascNamePool = Arrays.asList("Dave", "John", "Toby", "Tom", "Miguel", "Henry", "Jack", "Ryan", "James", "Matt");
-    private List<String> femNamePool = Arrays.asList("Isabelle", "Anna", "Ffion", "Matilda", "Liz", "Amanda", "Carrie", "Sophie", "Eris", "Bessie");
-    private List<String> neutralNamePool = Arrays.asList("Alex", "Jay", "Sock", "Frog", "Ashley", "Casey", "Stick", "Cameron", "Tingle", "Rock");
-    private List<String> lastNamePool = Arrays.asList("Apple", "Blahaj", "Custard", "Doorstep", "Electron", "Foghorn", "Grape", "Hellscape", "Intangible", "Java");;
+    private final String[] mascNamePool = new String[]{"Dave", "John", "Toby", "Tom", "Miguel", "Henry", "Jack", "Ryan", "James", "Matt"};
+    private final String[] femNamePool = new String[]{"Isabelle", "Anna", "Ffion", "Matilda", "Liz", "Amanda", "Carrie", "Sophie", "Eris", "Bessie"};
+    private final String[] neutralNamePool = new String[]{"Alex", "Jay", "Sock", "Frog", "Ashley", "Casey", "Stick", "Cameron", "Tingle", "Rock"};
+    private final String[] lastNamePool = new String[]{"Apple", "Blahaj", "Custard", "Doorstep", "Electron", "Foghorn", "Grape", "Hellscape", "Intangible", "Java"};
    
-    private List<Pronouns> selectablePronouns = Arrays.asList(Pronouns.THEY, Pronouns.HE, Pronouns.SHE);
+    private final Pronouns[] selectablePronouns = new Pronouns[]{Pronouns.THEY, Pronouns.HE, Pronouns.SHE};
     
-    private List<Age> selectableAge = Arrays.asList(Age.CHILD, Age.TEEN, Age.YOUNGADULT, Age.ADULT, Age.ELDER);
+    private final Age[] selectableAge = new Age[]{Age.CHILD, Age.TEEN, Age.YOUNGADULT, Age.ADULT, Age.ELDER};
     
-    private List<Job> selectableJob = Arrays.asList(Job.TEACHER, Job.JANITOR, Job.ASTRONAUT, Job.PIZZAPERSON, Job.PROGRAMMER);
+    private final Job[] selectableJob = new Job[]{Job.TEACHER, Job.JANITOR, Job.ASTRONAUT, Job.PIZZAPERSON, Job.PROGRAMMER};
     
-    private List<String> addressNames = Arrays.asList("Yellow", "Blue", "Red", "Pink", "Purple", "Orange", "Green", "Turquoise", "Magenta", "Prismarine", "Grey");
-    private List<String> addressStreetType = Arrays.asList("Lane", "Road", "Court", "Avenue", "Street");
+    private final String[]addressNames = new String[]{"Yellow", "Blue", "Red", "Pink", "Purple", "Orange", "Green", "Turquoise", "Magenta", "Prismarine", "Grey"};
+    private final String[] addressStreetType = new String[]{"Lane", "Road", "Court", "Avenue", "Street"};
     //generates all sims
     //unfortunately i think these need to be public
     public Sim leadSim;
@@ -52,7 +49,7 @@ public class Household {
 
         this.HouseholdFunds = 0;
 
-        this.HouseholdAddress = randomizer.nextInt(64) + " " + randomiserStr(randomizer, addressNames) + " " + randomiserStr(randomizer, addressStreetType);
+        this.HouseholdAddress = randomizer.nextInt(64) + " " + randomItem(randomizer, addressNames) + " " + randomItem(randomizer, addressStreetType);
         
         this.leadSim = generateSim(true);
         this.sim2 = generateSim(false);
@@ -69,22 +66,10 @@ public class Household {
 
     }
 
-        //these just randomise things 
-
-    public String randomiserStr(Random randomizer, List<String> list) {
-        return list.get(randomizer.nextInt(list.size()));
-    }
-
-    public Age randomiserAge(Random randomizer, List<Age> list) {
-        return list.get(randomizer.nextInt(list.size()));
-    }
-
-    public Job randomiserJob(Random randomizer, List<Job> list) {
-        return list.get(randomizer.nextInt(list.size()));
-    }
-
-    public Pronouns randomiserPronouns(Random randomizer, List<Pronouns> list) {
-        return list.get(randomizer.nextInt(list.size()));
+    
+    //thank you eris
+    public <T> T randomItem(Random randomizer, T[] array){
+        return array[randomizer.nextInt(array.length)];
     }
 
     /**
@@ -97,9 +82,9 @@ public class Household {
      * @return a freshly generated sim
      */
     public Sim generateSim(boolean lead) {
-        Pronouns simPronouns = randomiserPronouns(randomizer, selectablePronouns);
-        Job simJob = randomiserJob(randomizer, selectableJob);
-        Age simAge = randomiserAge(randomizer, selectableAge);
+        Pronouns simPronouns = randomItem(randomizer, selectablePronouns);
+        Job simJob = randomItem(randomizer, selectableJob);
+        Age simAge = randomItem(randomizer, selectableAge);
 
         if (lead == true) {
             simAge = Age.ADULT;
@@ -126,18 +111,18 @@ public class Household {
             //choose name based off pronouns
         switch(simPronouns) {
             case THEY:
-                simfName = randomiserStr(randomizer, neutralNamePool);
+                simfName = randomItem(randomizer, neutralNamePool);
                 break;
             case HE:
-                simfName = randomiserStr(randomizer, mascNamePool);
+                simfName = randomItem(randomizer, mascNamePool);
                 break;
             case SHE:
-                simfName = randomiserStr(randomizer, femNamePool);
+                simfName = randomItem(randomizer, femNamePool);
                 break;
         }
 
         //pick a last name
-        String simlName = randomiserStr(randomizer, lastNamePool);
+        String simlName = randomItem(randomizer, lastNamePool);
 
         Sim newSim = new Sim(simfName, simlName, simPronouns, simJob, simAge);
 

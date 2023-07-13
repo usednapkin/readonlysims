@@ -1,20 +1,24 @@
-import java.util.Arrays;
-import java.util.List;
+
 import java.util.Random;
 
-public class interactableSleep {
+//extended from base interactable class 
+public class interactableSleep extends interactables {
     
-    private List<String> sleepNamePool = Arrays.asList("King Comfy", "Queen Comfy", "Master", "Number One Very Good", "Sleep's Best", "Sweet Dreams", "Zzz...");
-
-    int interactableUsageDuration;
-
-    int interactableEffectiveness;
+    private final String[] sleepNamePool = new String[]{"King Comfy", "Queen Comfy", "Master", "Number One Very Good", "Sleep's Best", "Sweet Dreams", "Zzz..."};
 
     private Random randomizer = new Random();
 
     public interactableSleep() {
+        //effectiveness between 60 and 100
+        this.interactableEffectiveness = randomizer.nextInt(60, 100);
 
+        //between six and seven in game hours
+        this.interactableUsageDuration = randomizer.nextInt(360, 420);
+
+        //randomise the name
+        this.interactableName = randomItem(randomizer, sleepNamePool);
     }
+
 
 
 
