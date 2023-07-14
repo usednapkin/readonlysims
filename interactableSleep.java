@@ -12,6 +12,9 @@ public class interactableSleep extends interactables {
 
         //randomise the name
         this.interactableName = randomItem(randomizer, sleepNamePool) + " Bed";
+
+        //interactables will always be available when initialised
+        this.inUse = true;
     }
 
 }

@@ -4,8 +4,11 @@ public class interactables {
 
     public int interactableUsageDuration;
     public int interactableEffectiveness;
+    public int inUseUntil;
 
     public String interactableName;
+
+    public boolean inUse;
 
     //first time using this one thats so fun for me
     protected static Random randomizer = new Random();

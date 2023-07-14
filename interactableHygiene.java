@@ -1,4 +1,5 @@
 public class interactableHygiene extends interactables {
+
     private final String[] hygeineNamePool = new String[]{"Fancy", "Bubbles", "Deluxe", "Stink-B-Gone", "Automatic", "Clean As A Whistle"};
     private final String[] interactableNamePool = new String[]{"Bath", "Shower", "Cleaning Machine", "Kitchen Sink", "Jacuzzi", "Skin Blaster 9000", "PowerWasher"};
 
@@ -11,5 +12,8 @@ public class interactableHygiene extends interactables {
 
         //randomise the name
         this.interactableName = randomItem(randomizer, hygeineNamePool) + " " + randomItem(randomizer, interactableNamePool);
+
+        //interactables will always be available when initialised
+        this.inUse = true;
     }
 }
