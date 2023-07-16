@@ -13,6 +13,9 @@ public class interactableHygiene extends interactables {
         //randomise the name
         this.interactableName = randomItem(randomizer, hygeineNamePool) + " " + randomItem(randomizer, interactableNamePool);
 
+        //type identifier
+        this.interactableType = "Hygiene";
+
         //interactables will always be available when initialised
         this.inUse = true;
     }

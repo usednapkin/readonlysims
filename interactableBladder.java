@@ -13,6 +13,9 @@ public class interactableBladder extends interactables {
         //randomise the name
         this.interactableName = randomItem(randomizer, toiletNamePool) + " Toilet";
     
+        //type identifier
+        this.interactableType = "Bladder";
+
         //interactables will always be available when initialised
         this.inUse = true;
     }

@@ -13,6 +13,9 @@ public class interactableHunger extends interactables {
         //randomise the name
         this.interactableName = randomItem(randomizer, hungerNamePool) + " " + randomItem(randomizer, interactableNamePool);
     
+        //type identifier
+        this.interactableType = "Hunger";
+    
         //interactables will always be available when initialised
         this.inUse = true;
 

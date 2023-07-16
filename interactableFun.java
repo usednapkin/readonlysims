@@ -12,6 +12,9 @@ public class interactableFun extends interactables {
         //randomise the name
         this.interactableName = randomItem(randomizer, funNamePool) + " " + randomItem(randomizer, interactableNamePool);
         
+        //type identifier
+        this.interactableType = "Fun";
+
         //interactables will always be available when initialised
         this.inUse = true;
     

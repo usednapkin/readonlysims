@@ -8,6 +8,9 @@ public class interactables {
 
     public String interactableName;
 
+    //just for identification really
+    public String interactableType;
+
     public boolean inUse;
 
     //first time using this one thats so fun for me
@@ -15,6 +18,12 @@ public class interactables {
 
     public static <T> T randomItem(Random randomizer, T[] array){
         return array[randomizer.nextInt(array.length)];
+    }
+
+    public static String toString(String type, String interactableName, int interactableEffectiveness, boolean inUse) {
+        String interactableString = "Name: " + interactableName + "\n Type: " + type + "\n Effectiveness: "+ interactableEffectiveness + "\n" ;
+
+        return interactableString;
     }
 
 }
